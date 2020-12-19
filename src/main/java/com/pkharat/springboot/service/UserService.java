@@ -6,6 +6,8 @@ import com.pkharat.springboot.model.User;
 
 public interface UserService {
 	
-	List<User> getAllUsers();
+	List<User> getAllUsers(); //list all users
+	void saveUser(User user); //save user
+	User getUserById(long id);
 
 }
