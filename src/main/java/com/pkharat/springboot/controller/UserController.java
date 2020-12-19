@@ -29,7 +29,7 @@ public class UserController {
 	@GetMapping("showNewUserForm")
 	public String showNewUserForm(Model model) {
 		//create model attribute to bind form data
-		User user = new User();
+		User user = new User(0, null, null, null, null, null);
 		model.addAttribute("user",user);
 		return "new_user";
 	}
