@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.pkharat.springboot.model.User;
@@ -37,7 +38,17 @@ public class UserController {
 	public String saveUser(@ModelAttribute("user") User user) {
 		//save user to database
 		userService.saveUser(user);
-		return "redirect:/";
+		return "redirect:/";		
+	}
+	
+	@GetMapping("showFormForUpdate/{id}")
+	public String showFormForUpdate(@PathVariable(value="id") long id,Model model ) {
+		
+		//get user from service
+		User user = userService.getUserById(id);
+		//set user as model attribute to pre-populate the form
+		model.addAttribute("user", user);
+		return "update_user";
 		
 	}
 
