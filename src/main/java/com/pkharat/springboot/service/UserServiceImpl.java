@@ -69,6 +69,11 @@ public class UserServiceImpl implements UserService{
 		return this.userRepository.findAll(pageable);
 
 	}
+
+	@Override
+	public List<User> findByemail(String email) {		
+		return this.userRepository.findByEmailLike("%"+email+"%");
+	}
 	
 	
 

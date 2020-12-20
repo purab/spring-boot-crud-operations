@@ -13,5 +13,6 @@ public interface UserService {
 	User getUserById(long id);
 	void deleteUserById(long id);
 	Page<User> findPaginated(int pageNo,int pageSize,String sortField, String sortDirection);
+	List<User> findByemail(String email);
 
 }

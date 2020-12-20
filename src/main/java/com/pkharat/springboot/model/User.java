@@ -1,6 +1,7 @@
 package com.pkharat.springboot.model;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -66,11 +67,7 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	
-	
-	
+	}	
 	
 	
 	

@@ -3,6 +3,8 @@ package com.pkharat.springboot;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -14,6 +16,7 @@ import org.springframework.test.annotation.Rollback;
 
 import com.pkharat.springboot.model.User;
 import com.pkharat.springboot.repository.UserRepository;
+import com.pkharat.springboot.service.UserService;
 
 
 @DataJpaTest
@@ -31,6 +34,9 @@ public class UserRepositoryTests {
 	@Autowired
 	private UserRepository repo;
 	
+	@Autowired
+	private UserService userService;
+	
 	@Test
 	public void testCreateUser() {
 		User user = new User();
@@ -44,6 +50,15 @@ public class UserRepositoryTests {
 		User existUser = entityManager.find(User.class, savedUser.getId());
 		
 		assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
+		
+	}
+	
+	@Test
+	public void testSearchEmail() {
+		List<User> user = repo.findByEmailLike("pk@pk.com");
+		
+		//System.out.println("iiii:"+((User) user).getEmail());
+		
 		
 	}
 	
