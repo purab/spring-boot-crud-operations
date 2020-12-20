@@ -12,3 +12,5 @@ https://github.com/RameshMF/registration-login-spring-boot-security-thymeleaf-hi
 https://www.youtube.com/watch?v=xRE12Y-PFQs
 
 https://www.youtube.com/watch?v=eUuNPXG4EOw
+
+pagination - https://www.youtube.com/watch?v=Aie8n12EFQc
