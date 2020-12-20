@@ -9,7 +9,7 @@ import com.pkharat.springboot.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	
-	//@Query("select u from users u where u.email=?1")
-	//User FindByEmail(String email);
+	@Query("SELECT u FROM User u WHERE u.email = ?1")
+	public User findByEmail(String email);
 
 }

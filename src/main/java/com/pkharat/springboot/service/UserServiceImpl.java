@@ -6,10 +6,12 @@ import java.util.Optional;
 import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pkharat.springboot.model.User;
 import com.pkharat.springboot.repository.UserRepository;
+
 
 
 @Service
@@ -18,6 +20,9 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	@Override
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
@@ -25,7 +30,8 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void saveUser(User user) {
-		// TODO Auto-generated method stub
+		String test = user.getPassword();
+		user.setPassword(passwordEncoder.encode(test));
 		this.userRepository.save(user);
 		
 	}
@@ -47,5 +53,7 @@ public class UserServiceImpl implements UserService{
 	public void deleteUserById(long id) {
 		this.userRepository.deleteById(id);		
 	}
+	
+	
 
 }

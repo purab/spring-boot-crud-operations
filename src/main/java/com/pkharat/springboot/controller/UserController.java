@@ -1,5 +1,7 @@
 package com.pkharat.springboot.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,8 @@ import com.pkharat.springboot.service.UserService;
 @Controller
 public class UserController {
 	
+
+	
 	@Autowired
 	private UserService userService;
 	
@@ -29,7 +33,7 @@ public class UserController {
 	@GetMapping("showNewUserForm")
 	public String showNewUserForm(Model model) {
 		//create model attribute to bind form data
-		User user = new User(0, null, null, null, null, null);
+		User user = new User();
 		model.addAttribute("user",user);
 		return "new_user";
 	}

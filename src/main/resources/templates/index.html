@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="ISO-8859-1">
 <title>Users List</title>
@@ -14,10 +16,20 @@
 <body>
 
 
-<div class="container my-2">	
-<h1>User list</h1>
 
-<a th:href = "@{/showNewUserForm}" class="btn btn-primary btn-sm mb-3"> Add User </a>
+<div class="container my-2">	
+
+
+<h1>User list</h1>
+<div sec:authorize="isAuthenticated()">
+        Text visible only to authenticated users.
+    </div>
+    
+    <div sec:authorize="!isAuthenticated()">
+        Text visible only to not authenticated users.
+    </div>
+
+
 
 
 <table border="1" class = "table table-striped table-responsive-md">
